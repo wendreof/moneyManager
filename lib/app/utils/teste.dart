@@ -5,6 +5,8 @@
 /// to also be [endDrawArea].
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:moneyManager/app/modules/store/main_store.dart';
+import 'package:provider/provider.dart';
 
 /// Example that shows how to build a datum legend that shows measure values.
 ///
@@ -13,11 +15,13 @@ class DatumLegendWithMeasures extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  DatumLegendWithMeasures(this.seriesList, {this.animate});
+  DatumLegendWithMeasures(this.seriesList,
+      {double rendaMensal, double demaisRendas, this.animate});
 
-  factory DatumLegendWithMeasures.withSampleData() {
+  factory DatumLegendWithMeasures.withSampleData(
+      double rendaMensal, double demaisRendas) {
     return new DatumLegendWithMeasures(
-      _createSampleData(),
+      _createSampleData(rendaMensal, demaisRendas),
       // Disable animations for image tests.
       animate: false,
     );
@@ -60,14 +64,15 @@ class DatumLegendWithMeasures extends StatelessWidget {
   }
 
   /// Create series list with one series
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
+  static List<charts.Series<LinearSales, double>> _createSampleData(
+      double rendaMensal, double demaisRendas) {
     final data = [
-      new LinearSales(0, 100),
-      new LinearSales(1, 75),
+      new LinearSales(0, rendaMensal),
+      new LinearSales(1, demaisRendas),
     ];
 
     return [
-      new charts.Series<LinearSales, int>(
+      new charts.Series<LinearSales, double>(
         id: 'Sales',
         domainFn: (LinearSales sales, _) => sales.year,
         measureFn: (LinearSales sales, _) => sales.sales,
@@ -79,8 +84,8 @@ class DatumLegendWithMeasures extends StatelessWidget {
 
 /// Sample linear data type.
 class LinearSales {
-  final int year;
-  final int sales;
+  final double year;
+  final double sales;
 
   LinearSales(this.year, this.sales);
 }

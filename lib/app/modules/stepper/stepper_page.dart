@@ -12,6 +12,8 @@ class _StepperPageState extends State<StepperPage> {
   var _store;
   final TextEditingController _name = TextEditingController();
   final TextEditingController _email = TextEditingController();
+  final TextEditingController _rendaMensal = TextEditingController();
+  final TextEditingController _demaisRendas = TextEditingController();
 
   @override
   void initState() {
@@ -68,10 +70,16 @@ class _StepperPageState extends State<StepperPage> {
                     content: Column(
                       children: <Widget>[
                         TextFormField(
+                          controller: _rendaMensal,
+                          keyboardType:
+                              TextInputType.numberWithOptions(decimal: true),
                           decoration:
                               InputDecoration(labelText: 'Renda Mensal'),
                         ),
                         TextFormField(
+                          controller: _demaisRendas,
+                          keyboardType:
+                              TextInputType.numberWithOptions(decimal: true),
                           decoration:
                               InputDecoration(labelText: 'Demais Rendas'),
                         ),
@@ -130,6 +138,8 @@ class _StepperPageState extends State<StepperPage> {
     if (_currentStep == 2) {
       _store.nome = _name.text;
       _store.email = _email.text;
+      _store.rendaMensal = double.tryParse(_rendaMensal.text);
+      _store.demaisRendas = double.tryParse(_demaisRendas.text);
       Modular.to.pushReplacementNamed("/home");
     }
     _currentStep < 2 ? setState(() => _currentStep += 1) : null;

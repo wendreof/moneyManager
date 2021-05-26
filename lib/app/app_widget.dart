@@ -21,7 +21,7 @@ class AppWidget extends StatelessWidget {
         supportedLocales: [const Locale('pt', 'BR')],
         debugShowCheckedModeBanner: false,
         navigatorKey: Modular.navigatorKey,
-        title: 'Credisan Pix',
+        title: 'Title',
         // theme: ThemeData(
         //   colorScheme: ColorScheme.light(primary: const Color(0xff004c24)),
         //   primaryColor: Color(0xff004c24),

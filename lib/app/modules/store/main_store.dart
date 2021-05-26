@@ -10,6 +10,10 @@ abstract class _MainStore with Store {
   String nome = "";
   @observable
   String email = "";
+  @observable
+  double rendaMensal = 0; 
+  @observable
+  double demaisRendas = 0;
   // @observable
   // String nome = "";
   // @observable

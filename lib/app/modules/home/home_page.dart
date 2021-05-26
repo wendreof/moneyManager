@@ -76,7 +76,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           // child: Text(
           //   localization.demoNavigationDrawerText,
           // ),
-          child: DatumLegendWithMeasures.withSampleData(),
+          child: DatumLegendWithMeasures.withSampleData(_store.rendaMensal, _store.demaisRendas),
           //child: StepperDemo(),
         ),
       ),
