@@ -7,9 +7,9 @@ class MainStore = _MainStore with _$MainStore;
 
 abstract class _MainStore with Store {
   @observable
-  String nome = "kkk";
+  String nome = "";
   @observable
-  String agencia = "";
+  String email = "";
   // @observable
   // String nome = "";
   // @observable

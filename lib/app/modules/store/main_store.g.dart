@@ -24,18 +24,18 @@ mixin _$MainStore on _MainStore, Store {
     });
   }
 
-  final _$agenciaAtom = Atom(name: '_MainStore.agencia');
+  final _$emailAtom = Atom(name: '_MainStore.email');
 
   @override
-  String get agencia {
-    _$agenciaAtom.reportRead();
-    return super.agencia;
+  String get email {
+    _$emailAtom.reportRead();
+    return super.email;
   }
 
   @override
-  set agencia(String value) {
-    _$agenciaAtom.reportWrite(value, super.agencia, () {
-      super.agencia = value;
+  set email(String value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
     });
   }
 
@@ -43,7 +43,7 @@ mixin _$MainStore on _MainStore, Store {
   String toString() {
     return '''
 nome: ${nome},
-agencia: ${agencia}
+email: ${email}
     ''';
   }
 }

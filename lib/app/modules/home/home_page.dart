@@ -35,7 +35,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         _store.nome,
       ),
       accountEmail: Text(
-        "wendreolf@email.com",
+        _store.email,
       ),
       currentAccountPicture: const CircleAvatar(
         child: FlutterLogo(size: 42.0),
@@ -67,7 +67,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Texto",
+          "Título",
         ),
       ),
       body: Center(

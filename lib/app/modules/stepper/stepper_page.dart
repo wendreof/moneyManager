@@ -10,6 +10,9 @@ class StepperPage extends StatefulWidget {
 
 class _StepperPageState extends State<StepperPage> {
   var _store;
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -46,9 +49,11 @@ class _StepperPageState extends State<StepperPage> {
                     content: Column(
                       children: <Widget>[
                         TextFormField(
+                          controller: _name,
                           decoration: InputDecoration(labelText: 'Nome'),
                         ),
                         TextFormField(
+                          controller: _email,
                           decoration: InputDecoration(labelText: 'E-mail'),
                         ),
                       ],
@@ -116,11 +121,15 @@ class _StepperPageState extends State<StepperPage> {
   }
 
   tapped(int step) {
-    setState(() => _currentStep = step);
+    setState(() {
+      _currentStep = step;
+    });
   }
 
   continued() {
     if (_currentStep == 2) {
+      _store.nome = _name.text;
+      _store.email = _email.text;
       Modular.to.pushReplacementNamed("/home");
     }
     _currentStep < 2 ? setState(() => _currentStep += 1) : null;

@@ -22,11 +22,11 @@ class AppWidget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         navigatorKey: Modular.navigatorKey,
         title: 'Credisan Pix',
-        theme: ThemeData(
-          colorScheme: ColorScheme.light(primary: const Color(0xff004c24)),
-          primaryColor: Color(0xff004c24),
-          accentColor: Color(0xffef7d00),
-        ),
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.light(primary: const Color(0xff004c24)),
+        //   primaryColor: Color(0xff004c24),
+        //   accentColor: Color(0xffef7d00),
+        // ),
         initialRoute: '/',
         onGenerateRoute: Modular.generateRoute,
         builder: (BuildContext context, Widget child) {
