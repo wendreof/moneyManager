@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery/l10n/gallery_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:moneyManager/app/modules/home/teste.dart';
+import 'package:moneyManager/app/modules/stepper/stepper_page.dart';
+import 'package:moneyManager/app/modules/store/main_store.dart';
+import 'package:moneyManager/app/utils/teste.dart';
+import 'package:provider/provider.dart';
 import 'home_controller.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -15,16 +18,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
+  var _store;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _store = Provider.of<MainStore>(context);
     var localization = GalleryLocalizations.of(context);
     final drawerHeader = UserAccountsDrawerHeader(
       accountName: Text(
-        "usuário xyz",
+        _store.nome,
       ),
       accountEmail: Text(
-        "teste@email.com",
+        "wendreolf@email.com",
       ),
       currentAccountPicture: const CircleAvatar(
         child: FlutterLogo(size: 42.0),
@@ -66,6 +77,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           //   localization.demoNavigationDrawerText,
           // ),
           child: DatumLegendWithMeasures.withSampleData(),
+          //child: StepperDemo(),
         ),
       ),
       drawer: Drawer(
