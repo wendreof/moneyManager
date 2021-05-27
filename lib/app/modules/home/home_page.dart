@@ -67,17 +67,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Título",
+          'Saldo R\$: ${_store.saldo}',
         ),
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          // child: Text(
-          //   localization.demoNavigationDrawerText,
-          // ),
-          child: DatumLegendWithMeasures.withSampleData(_store.rendaMensal, _store.demaisRendas),
-          //child: StepperDemo(),
+          child: DatumLegendWithMeasures.withSampleData(_store.rendaMensal,
+              _store.demaisRendas, _store.conta1, _store.conta2),
         ),
       ),
       drawer: Drawer(

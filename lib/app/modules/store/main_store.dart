@@ -11,33 +11,15 @@ abstract class _MainStore with Store {
   @observable
   String email = "";
   @observable
-  double rendaMensal = 0; 
+  double rendaMensal = 0;
   @observable
   double demaisRendas = 0;
-  // @observable
-  // String nome = "";
-  // @observable
-  // String deviceId = "";
-  // @observable
-  // String documento = "";
-  // @observable
-  // int tipoDocumento = 0;
-  // @observable
-  // String numeroCelular = "";
-  // @observable
-  // var saldo;
-  // @observable
-  // int totalChaves = 0;
-  // @observable
-  // int totalChavesAtivas = 0;
-  // @observable
-  // Chave chaveFavorita;
-  // @observable
-  // bool pix_termos_iniciais = false;
-  // @observable
-  // bool visible = false;
-  // @observable
-  // bool reAuth = false;
+  @observable
+  double conta1 = 0;
+  @observable
+  double conta2 = 0;
+  @observable
+  double saldo = 0;
 
   // bool isvisible() => visible;
 
@@ -128,8 +110,8 @@ abstract class _MainStore with Store {
   // void setNotReAuth() {
   //   reAuth = false;
   // }
-  // @action
-  // Future<void> setSaldo(double pSaldo) async {
-  //   saldo = pSaldo;
-  // }
+  @action
+  Future<void> setSaldo() async {
+    saldo = (rendaMensal + demaisRendas) - (conta1+conta2);
+  }
 }

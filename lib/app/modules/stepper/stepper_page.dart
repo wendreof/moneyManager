@@ -14,6 +14,8 @@ class _StepperPageState extends State<StepperPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _rendaMensal = TextEditingController();
   final TextEditingController _demaisRendas = TextEditingController();
+  final TextEditingController _conta1 = TextEditingController();
+  final TextEditingController _conta2 = TextEditingController();
 
   @override
   void initState() {
@@ -28,6 +30,14 @@ class _StepperPageState extends State<StepperPage> {
   Widget build(BuildContext context) {
     _store = Provider.of<MainStore>(context);
     _store.nome = "Nome provider";
+
+    _name.text = "wendreof";
+    _email.text = "wendreo@outlook.com";
+    _rendaMensal.text = "2056";
+    _demaisRendas.text = "0";
+    _conta1.text = "89";
+    _conta2.text = "100";
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -95,10 +105,12 @@ class _StepperPageState extends State<StepperPage> {
                     content: Column(
                       children: <Widget>[
                         TextFormField(
+                          controller: _conta1,
                           decoration:
                               InputDecoration(labelText: 'Conta de Internet'),
                         ),
                         TextFormField(
+                          controller: _conta2,
                           decoration:
                               InputDecoration(labelText: 'Conta de Luz'),
                         ),
@@ -140,6 +152,9 @@ class _StepperPageState extends State<StepperPage> {
       _store.email = _email.text;
       _store.rendaMensal = double.tryParse(_rendaMensal.text);
       _store.demaisRendas = double.tryParse(_demaisRendas.text);
+      _store.conta1 = double.tryParse(_conta1.text);
+      _store.conta2 = double.tryParse(_conta2.text);
+      _store.setSaldo();
       Modular.to.pushReplacementNamed("/home");
     }
     _currentStep < 2 ? setState(() => _currentStep += 1) : null;
